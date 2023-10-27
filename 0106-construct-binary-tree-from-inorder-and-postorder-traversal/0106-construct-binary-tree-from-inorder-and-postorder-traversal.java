@@ -14,33 +14,32 @@
  * }
  */
 class Solution {
-    int preOrderIndex=0;
+    int rootIndex;
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        preOrderIndex= inorder.length-1;
-
-      return  buildTree(inorder, postorder,0,inorder.length-1);
-        
+        rootIndex = postorder.length-1;
+        return buildTree(inorder,postorder,0 ,postorder.length-1);
     }
-    public TreeNode buildTree(int[] inorder,int [] postorder,int start,int end){
+    public TreeNode buildTree(int[] inorder,int[] postorder,int start ,int end){
 
         if(start>end){
             return null;
         }
-        TreeNode root = new TreeNode(postorder[preOrderIndex--]);
-        if(start==end){
+        TreeNode root = new TreeNode(postorder[rootIndex--]);
+         if(start==end){
             return root;
         }
-        int inorderIndex= getInorderIndex(inorder, start, end,root.val);
-        root.right = buildTree(inorder,postorder,inorderIndex+1,end);
-        root.left = buildTree(inorder,postorder,start,inorderIndex-1);
+        int nextIndex = findIndexInorder(root.val, inorder,start,end);
+        root.right = buildTree(inorder,postorder,nextIndex+1 , end);
+        root.left = buildTree(inorder,postorder,start , nextIndex-1);
         return root;
     }
-   public int getInorderIndex(int [] inorder,int start,int end,int data){
-       for(int i=start;i<=end;i++){
-           if(inorder[i]==data){
-               return i;
-           }
-       }
-       return -1;
-   }
+
+    public int findIndexInorder(int data, int [] inorder,int start,int end){
+        for(int i=start; i<= end;i++){
+            if(data==inorder[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
 }
