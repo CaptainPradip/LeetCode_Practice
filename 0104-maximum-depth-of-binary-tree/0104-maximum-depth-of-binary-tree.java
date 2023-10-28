@@ -13,27 +13,35 @@
  *     }
  * }
  */
+ class Pair{
+    public TreeNode node;
+    public int val;
+     Pair(TreeNode node,int val){
+         this.node = node;
+         this.val = val;
+     }
+ }
 class Solution {
     public int maxDepth(TreeNode root) {
-        Queue<TreeNode> queue= new LinkedList<>();
+        Stack<Pair> stack= new Stack<>();
         if(root==null){
             return 0;
         }
-        queue.add(root);
-        int level =0;
-        
-        while(!queue.isEmpty()){
-            int size = queue.size();
-            for(int i=0 ;i<size;i++){
-                TreeNode currentNode = queue.remove();
-                if(currentNode.left!=null){
-                    queue.add(currentNode.left);
+        stack.push(new Pair(root,1));
+        int level = 0;
+        while(!stack.isEmpty()){
+          //  for(int i=0 ;i<size;i++){
+                Pair currentNode = stack.pop();
+                if(currentNode.node.left==null && currentNode.node.right==null){
+                    level = Math.max(level,currentNode.val);
                 }
-                if(currentNode.right!=null){
-                    queue.add(currentNode.right);
+                if(currentNode.node.left!=null){
+                    stack.push(new Pair(currentNode.node.left,currentNode.val+1));
                 }
-            }
-            level++;
+                if(currentNode.node.right!=null){
+                    stack.push(new Pair(currentNode.node.right,currentNode.val+1));
+                }
+
         }
         return level;
     }
