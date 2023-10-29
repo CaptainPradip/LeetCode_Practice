@@ -17,7 +17,7 @@ class Solution {
     public int sumNumbers(TreeNode root) {
       return  sumNumbers(root, new LinkedList<>());
     }
-
+    // this is example of backtracking 
     public int sumNumbers(TreeNode root,LinkedList<Integer> list){
         if(root==null){
             return 0;
@@ -32,10 +32,10 @@ class Solution {
             return sum;
            
         }
-       int sum1=  sumNumbers(root.left,list);
-       int sum2 = sumNumbers(root.right,list);
+       int leftSum=  sumNumbers(root.left,list);
+       int rightSum = sumNumbers(root.right,list);
        list.removeLast();
-       return sum1 + sum2;
+       return leftSum + rightSum;
 
     }
 }
