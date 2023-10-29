@@ -13,41 +13,17 @@
  *     }
  * }
  */
- class Pair{
-     TreeNode p ;
-     TreeNode q ;
-     Pair(TreeNode p, TreeNode q){
-         this.p = p;
-         this.q = q;
-     }
- }
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        Queue<Pair> queue = new LinkedList<>();
-        if(p==q){
+        if(p==null && q == null){
             return true;
         }
-        queue.add(new Pair(p,q));
-        while(!queue.isEmpty()){
-            Pair pair = queue.remove();
-            if(pair.p==null && pair.q!=null || pair.q==null && pair.p!=null){
-                return false;
-            }
-            if(pair.p.left!=null && pair.q.left!=null){
-                queue.add(new Pair(pair.p.left,pair.q.left));
-            }else if(pair.p.left != pair.q.left){
-               return false;
-            }
-            if(pair.p.right!=null && pair.q.right!=null){
-                queue.add(new Pair(pair.p.right,pair.q.right));
-            }else if(pair.p.right != pair.q.right ){
-               return false;
-            }
-            if(pair.p.val!=pair.q.val){
-                return false;
-            }
-
+        if(p==null || q==null ){
+            return false;
         }
-        return true;
+        if(p.val==q.val){
+           return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        }
+        return false;
     }
 }
