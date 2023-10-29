@@ -22,24 +22,22 @@ class Pair {
     }
 }
 class Solution {
-    public int minDepth(TreeNode root) {
-        Queue<Pair> queue = new LinkedList<>();
-        if(root==null){
-            return 0;
-        }
-        queue.add(new Pair(root,1));
-        while(!queue.isEmpty()){
-            Pair pair = queue.remove();
-            if(pair.node.left==null && pair.node.right==null){
-                return pair.val;
-            }
-            if(pair.node.left!=null){
-                queue.add(new Pair(pair.node.left,pair.val+1));
-            }
-            if(pair.node.right!=null){
-                queue.add(new Pair(pair.node.right,pair.val+1));
-            }
-        }
-        return -1;
+   public int minDepth(TreeNode root){
+       if(root == null){
+           return 0;
+       }
+     return dfs(root);
+   }
+    public int dfs(TreeNode root) {
+       if(root == null){
+           return Integer.MAX_VALUE;
+       }
+       if(root.left == null && root.right == null){
+           return 1;
+       }
+     int leftDept = dfs(root.left);
+     int rightDept = dfs(root.right);
+
+     return 1 + Math.min(leftDept, rightDept) ;
     }
 }
