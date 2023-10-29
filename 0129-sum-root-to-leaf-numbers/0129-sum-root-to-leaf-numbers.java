@@ -15,16 +15,27 @@
  */
 class Solution {
     public int sumNumbers(TreeNode root) {
-      return  helper(root, 0);
+      return  sumNumbers(root, new LinkedList<>());
     }
-    public int helper(TreeNode root,int sum){
+
+    public int sumNumbers(TreeNode root,LinkedList<Integer> list){
         if(root==null){
             return 0;
         }
-        sum = sum*10 + root.val;
+        list.add(root.val);
         if(root.left==null && root.right==null){
+            int sum =0 ;
+            for(int n : list){
+                sum=sum*10 + n;
+            }
+             list.removeLast();
             return sum;
+           
         }
-        return helper(root.left,sum) + helper(root.right,sum);
+       int sum1=  sumNumbers(root.left,list);
+       int sum2 = sumNumbers(root.right,list);
+       list.removeLast();
+       return sum1 + sum2;
+
     }
 }
