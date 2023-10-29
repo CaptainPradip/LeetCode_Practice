@@ -14,28 +14,28 @@
  * }
  */
 class Solution {
-    int rootIndex=0;
+    int rootIndex = 0; 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return buildTree(preorder,inorder,0,inorder.length-1);
+        return  buildTree(preorder,inorder , 0, inorder.length-1);
     }
-    public TreeNode buildTree(int[] preorder, int[] inorder,int start ,int end ){
-        if(start>end){
+    public TreeNode buildTree(int [] preorder,int[] inorder , int start, int end) {
+        if(start > end){
             return null;
         }
+
         TreeNode root = new TreeNode(preorder[rootIndex++]);
-        int inorderIndex = getInOrderIndex(inorder,root.val);
-        root.left= buildTree(preorder,inorder,start,inorderIndex-1 );
-        root.right= buildTree(preorder,inorder,inorderIndex+1,end );
+        int nextRootIndex = getNextRootIndex(root.val,inorder,start,end);
+        root.left = buildTree(preorder,inorder , start, nextRootIndex-1);
+        root.right = buildTree(preorder,inorder , nextRootIndex+1, end);
         return root;
+    }
 
-     } 
-     public int  getInOrderIndex(int[] inorder ,int data){
-         for(int i=0; i<inorder.length;i++){
-             if(inorder[i]==data){
-                 return i;
-             }
-         }
-         return -1;
-     }
-
+   public int getNextRootIndex(int data, int [] inorder,int start,int end){
+        for(int i=start; i<= end;i++){
+            if(data==inorder[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
 }
