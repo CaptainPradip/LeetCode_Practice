@@ -24,10 +24,11 @@ class Solution {
         if(start>end){
             return null;
         }
-        TreeNode root = new TreeNode(postorder[rootIndex--]);
-         if(start==end){
-            return root;
-        }
+   
+        //  if(start==end){
+        //     return root;
+        // }
+             TreeNode root = new TreeNode(postorder[rootIndex--]);
         int nextIndex = findIndexInorder(root.val, inorder,start,end);
         root.right = buildTree(inorder,postorder,nextIndex+1 , end);
         root.left = buildTree(inorder,postorder,start , nextIndex-1);
