@@ -27,7 +27,7 @@ class Solution {
                 stack.push(node);
             }
         }
-      // Find the common ancestor
+        // Find the common ancestor
         while (!region1.equals(" ")) {
             ancesstor.add(region1);
             region1 = parents.get(region1);
