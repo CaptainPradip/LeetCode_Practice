@@ -1,5 +1,26 @@
 class Solution {
     public String findSmallestRegion(List<List<String>> regions, String region1, String region2) {
+        Map<String, String> parents = new HashMap<>();
+         for(int i = 0 ;i < regions.size();i++) {
+            String start = regions.get(i).get(0);
+            for(int j= 1 ; j < regions.get(i).size();j++) {
+                String region = regions.get(i).get(j);
+                parents.put(region,start);
+            }
+        }
+        Stack<String> stack = new Stack<>();
+        Set<String> ancesstor = new HashSet<>();
+        // Find the common ancestor
+        while (region1!=null) {
+            ancesstor.add(region1);
+            region1 = parents.get(region1);
+        }
+        while (!ancesstor.contains(region2)) {
+            region2 = parents.get(region2);
+        }
+        return region2;
+    }
+     public String findSmallestRegion2(List<List<String>> regions, String region1, String region2) {
         Map<String,List<String>> graph = new HashMap<>();
         for(int i = 0 ;i < regions.size();i++) {
             String start = regions.get(i).get(0);
