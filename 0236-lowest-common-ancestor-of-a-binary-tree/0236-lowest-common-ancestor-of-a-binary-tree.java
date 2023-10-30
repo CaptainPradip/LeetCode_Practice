@@ -27,7 +27,7 @@ class Solution {
         }
         while(p!=null){
             ancesstor.add(p);
-            p= parents.get(p);
+            p = parents.get(p);
         }
          while(!ancesstor.contains(q)){
             q = parents.get(q);
