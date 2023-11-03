@@ -23,17 +23,27 @@ class Solution {
         preorderTraversal(root,0L);
         return count;
     }
+    /**
+        This Problem can be solve by prefix sum;
+    */
     public void preorderTraversal(TreeNode root,long currentSum){
         if(root==null){
             return;
         }
+         // current prefix sum
         currentSum+=root.val;
+        // number of times the curr_sum − k has occured already, 
+        // determines the number of times a path with sum k 
+        // has occured upto the current node
         if(prefixSumMap.containsKey(currentSum-k)){
             count+=prefixSumMap.get(currentSum-k);
         }
         prefixSumMap.put(currentSum,prefixSumMap.getOrDefault(currentSum,0)+1);
         preorderTraversal(root.left,currentSum);
         preorderTraversal(root.right,currentSum);
+        // remove the current sum from the hashmap
+        // in order not to use it during 
+        // the parallel subtree processing
         prefixSumMap.put(currentSum,prefixSumMap.get(currentSum)-1);
     }
 }
