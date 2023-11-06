@@ -1,8 +1,8 @@
 class Solution {
     List<List<Integer>> result = new ArrayList<>();
-     HashSet<List<Integer>> set = new HashSet<>();
+    HashSet<List<Integer>> set = new HashSet<>();
     public List<List<Integer>> permuteUnique(int[] nums) {
-        
+        // Keep the number visited status
         boolean[] visited = new boolean [nums.length];
 
         backTracking(new LinkedList<>(), nums,visited);
@@ -21,7 +21,7 @@ class Solution {
                 visited[i]=true;
                 backTracking(permutations,nums,visited);
                 permutations.removeLast();
-                 visited[i]=false;
+                visited[i]=false;
             }
                
 
