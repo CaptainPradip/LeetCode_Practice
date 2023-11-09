@@ -1,16 +1,13 @@
 class SmallestInfiniteSet {
     PriorityQueue<Integer> heap = new PriorityQueue<>();
-    HashSet<Integer> set= new HashSet<>();
     public SmallestInfiniteSet() {
         for(int i=1;i<=1000;i++){
             this.heap.add(i);
-            this.set.add(i);
         }
     }
     
     public int popSmallest() {
         int num = this.heap.remove();
-        set.remove(num);
         return num ;
     }
     
