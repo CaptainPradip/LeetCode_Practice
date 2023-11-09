@@ -19,14 +19,15 @@ class Trie {
             if(!currentNode.childern.containsKey(ch)){
                 currentNode.childern.put(ch,new TrieNode());
             }
+             currentNode = currentNode.childern.get(ch);
             if(currentNode.searchWord.size()<3) {
                 currentNode.searchWord.add(word);
             }
-            currentNode = currentNode.childern.get(ch);
+           
         }
-         if(currentNode.searchWord.size()<3) {
-                currentNode.searchWord.add(word);
-        }
+        // if(currentNode.searchWord.size()<3) {
+        //     currentNode.searchWord.add(word);
+        // }
         currentNode.isEnd = true;
     }
     public  List<List<String>> getTopSearch(String prefix){
@@ -56,7 +57,6 @@ class Solution {
         for(String product : products){
             root.insert(product);
         }
-        
         return root.getTopSearch(searchWord);
     }
 }
