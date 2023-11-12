@@ -11,15 +11,12 @@ class Solution {
             for(int pile: piles){
                 hourSpend+=Math.ceil((double)pile/mid);
             }
-            // if(hourSpend==h){
-            //     return mid;
-            // }
             if(hourSpend <= h){
                 right = mid ;
             } else {
                 left = mid+1;
             }
         }
-        return right;
+        return left;
     }
 }
