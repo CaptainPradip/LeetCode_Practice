@@ -36,7 +36,7 @@ class Solution {
         Node finish = null;
         while (!stack.isEmpty()) {
             trav = stack.pop();
-            
+
             if (finish != null) {
                 finish.right = trav;
             }
@@ -46,11 +46,9 @@ class Solution {
             finish = trav;
 
             trav = trav.right;
-            if (trav != null) {
-                while (trav != null) {
-                    stack.push(trav);
-                    trav = trav.left;
-                }
+            while (trav != null) {
+                stack.push(trav);
+                trav = trav.left;
             }
         }
         start.left = finish;
