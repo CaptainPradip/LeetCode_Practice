@@ -3,8 +3,8 @@ class Solution {
     int[][] memo;
 
     public boolean stoneGame(int[] piles) {
-       // this.memo= new int [piles.length][piles.length];
-        return true; //maxStone(piles,0,piles.length-1)>=0;
+        this.memo = new int[piles.length][piles.length];
+        return maxStone(piles, 0, piles.length - 1) >= 0;
     }
 
     public int maxStone(int[] piles, int l, int r) {
