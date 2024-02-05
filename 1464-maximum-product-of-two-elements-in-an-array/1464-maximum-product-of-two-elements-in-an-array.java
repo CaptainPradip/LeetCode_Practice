@@ -6,10 +6,9 @@ class Solution {
             if (first < nums[i]) {
                 second = first;
                 first = nums[i];
-                continue;
-            }
-            if(second < nums[i]){
-                second =nums[i];
+                //continue;
+            } else if (second < nums[i]) {
+                second = nums[i];
             }
         }
         return (first - 1) * (second - 1);
