@@ -10,7 +10,7 @@ class Solution {
                     if ((top == '(' && ch == ')') || (top == '[' && ch == ']') || (top == '{' && ch == '}')) {
                         stack.pop();
                     } else {
-                        stack.push(ch);
+                         return false;
                     }
                 } else {
                     return false;
