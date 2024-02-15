@@ -31,6 +31,6 @@ class Solution {
 			}
 
 		}
-		return visitedNode== numCourses;
+		return visitedNode == numCourses;
     }
 }
