@@ -7,22 +7,21 @@ class Solution {
         Set<Character> set = new HashSet<>();
         while (right < n) {
             char ch = s.charAt(right);
+            // change condition
             while (set.contains(ch)) {
                 set.remove(s.charAt(left));
                 left++;
             }
             set.add(ch);
+            // get result condition
             max = Math.max(max, right - left + 1);
             right++;
-
         }
         return max;
+
     }
 }
 
-// Time O(n)
-
 // s = "abcabcbb"
-// dyanamic sliding window
-// 2 point left right
-// HashMap or Hashset
+// Dyanamic Sliding window
+// HashMap or HashSet
