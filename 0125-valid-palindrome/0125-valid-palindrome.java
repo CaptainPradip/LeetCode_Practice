@@ -11,7 +11,6 @@ class Solution {
             j--;
         }
         return true;
-        
     }
 }
 
