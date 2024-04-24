@@ -1,8 +1,10 @@
 class Solution {
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
+
         if (s.length() % 2 != 0)
             return false;
+
         for (char ch : s.toCharArray()) {
             if (ch == '(' || ch == '{' || ch == '[') {
                 stack.push(ch);
@@ -12,7 +14,7 @@ class Solution {
                     if ((top == '(' && ch == ')') || (top == '[' && ch == ']') || (top == '{' && ch == '}')) {
                         stack.pop();
                     } else {
-                         return false;
+                        return false;
                     }
                 } else {
                     return false;
