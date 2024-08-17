@@ -8,11 +8,11 @@ class Solution {
         while (left < right) {
             leftMax = Math.max(leftMax, height[left]);
             rightMax = Math.max(rightMax, height[right]);
-            if(leftMax<rightMax){
-                maxWater+=leftMax- height[left];
+            if (leftMax < rightMax) {
+                maxWater += leftMax - height[left];
                 left++;
-            }else{
-                maxWater+=rightMax- height[right];
+            } else {
+                maxWater += rightMax - height[right];
                 right--;
             }
         }
