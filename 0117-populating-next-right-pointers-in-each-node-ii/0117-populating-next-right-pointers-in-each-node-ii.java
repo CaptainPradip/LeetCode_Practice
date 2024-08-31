@@ -23,28 +23,28 @@ class Node {
 
 class Solution {
     public Node connect(Node root) {
-        if(root==null){
+        if (root == null) {
             return root;
         }
-        Deque<Node> queue = new ArrayDeque<>();
+        Queue<Node> queue = new ArrayDeque<>();
         queue.add(root);
-
-        while(!queue.isEmpty()){
-
+        while (!queue.isEmpty()) {
             int size = queue.size();
-            for(int i=0;i<size;i++){
-                Node currentNode = queue.poll();
-                if(i!=size-1){
+            for (int i = 0; i < size; i++) {
+                Node currentNode = queue.remove();
+
+                if (i != size - 1) {
                     currentNode.next = queue.peek();
                 }
-                if(currentNode.left!=null){
+                if (currentNode.left != null) {
                     queue.add(currentNode.left);
                 }
-                if(currentNode.right!=null){
+                if (currentNode.right != null) {
                     queue.add(currentNode.right);
                 }
             }
         }
         return root;
+
     }
 }
