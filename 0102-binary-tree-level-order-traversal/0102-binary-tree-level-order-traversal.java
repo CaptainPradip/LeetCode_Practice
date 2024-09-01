@@ -25,7 +25,6 @@ class Solution {
             int size = queue.size();
             List<Integer> temp = new ArrayList<>();
             for (int i = 0; i < size; i++) {
-
                 TreeNode currentNode = queue.remove();
                 temp.add(currentNode.val);
                 if (currentNode.left != null) {
@@ -36,7 +35,6 @@ class Solution {
                 }
             }
             result.add(temp);
-
         }
         return result;
 
