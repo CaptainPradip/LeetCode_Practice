@@ -15,22 +15,22 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
-        // do the inorder the
-        // pop the element and check k =0 ;
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode current = root;
-        while (current != null || !stack.isEmpty()) {
-            while (current != null) {
-                stack.push(current);
-                current = current.left;
+        TreeNode trav = root;
+
+        while (trav != null || !stack.isEmpty()) {
+            while (trav != null) {
+                stack.push(trav);
+                trav = trav.left;
             }
             TreeNode top = stack.pop();
             k--;
-            current = top.right;
+            trav = top.right;
             if (k == 0) {
                 return top.val;
             }
         }
         return -1;
+
     }
 }
