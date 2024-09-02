@@ -19,7 +19,6 @@ class Solution {
         Integer prev = null;
         TreeNode trav = root;
         while (trav != null || !stack.isEmpty()) {
-
             while (trav != null) {
                 stack.push(trav);
                 trav = trav.left;
@@ -31,6 +30,8 @@ class Solution {
             prev = trav.val;
             trav = trav.right;
         }
+
         return true;
+
     }
 }
