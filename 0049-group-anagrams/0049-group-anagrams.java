@@ -1,6 +1,6 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<String, List<String>> map = new HashMap<>();
+        HashMap<String, List> map = new HashMap<>();
         for (String str : strs) {
             char[] keys = str.toCharArray();
             Arrays.sort(keys);
@@ -13,10 +13,3 @@ class Solution {
         return new ArrayList(map.values());
     }
 }
-// O(N K log(K));
-
-// Input: strs = ["eat","tea","tan","ate","nat","bat"]
-// Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
-
-// "eat" => Sort "aet" ;
-// "ate" => sort "aet" ;
