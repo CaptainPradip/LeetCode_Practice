@@ -1,12 +1,11 @@
 class Solution {
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
-
-        if (s.length() % 2 != 0)
+        if (s.length() % 2 != 0) {
             return false;
-
+        }
         for (char ch : s.toCharArray()) {
-            if (ch == '(' || ch == '{' || ch == '[') {
+            if (ch == '(' || ch == '[' || ch == '{') {
                 stack.push(ch);
             } else {
                 if (!stack.isEmpty()) {
@@ -19,9 +18,13 @@ class Solution {
                 } else {
                     return false;
                 }
-
             }
         }
         return stack.isEmpty();
     }
 }
+
+// Stack
+// s = "()[]{}"
+// Time O(n);
+//
