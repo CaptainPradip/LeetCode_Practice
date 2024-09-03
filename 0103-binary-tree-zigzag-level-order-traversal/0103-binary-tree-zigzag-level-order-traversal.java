@@ -26,7 +26,7 @@ class Solution {
             int size = queue.size();
             LinkedList<Integer> temp = new LinkedList<>();
             for (int i = 0; i < size; i++) {
-                TreeNode currentNode = queue.pop();
+                TreeNode currentNode = queue.remove();
                 if (isEven) {
                     temp.addLast(currentNode.val);
                 } else {
