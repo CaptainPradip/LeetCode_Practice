@@ -15,9 +15,10 @@ class Solution {
             int size = q.size();
             // Iterate on current level.
             for (int i = 0; i < size; i++) {
-                int[] currentNode = q.poll();
+                int[] currentNode = q.remove();
                 int node = currentNode[0];
                 int distance = currentNode[1];
+
                 if (!adj.containsKey(node))
                     continue;
                 // Loop over neighbors of popped node.
