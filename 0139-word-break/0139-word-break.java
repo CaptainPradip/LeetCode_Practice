@@ -1,23 +1,24 @@
 class Solution {
-    HashMap<String,Boolean> memo= new HashMap<>();
+    HashMap<String, Boolean> memo = new HashMap<>();
+
     public boolean wordBreak(String s, List<String> wordDict) {
-        if(memo.containsKey(s)){
+        if (memo.containsKey(s)) {
             return memo.get(s);
         }
-        if(s.isEmpty()){
+        if (s.isEmpty()) {
             return true;
         }
-        for(String str : wordDict){
-            if(s.startsWith(str)){
-                String prefix= s.substring(str.length(),s.length());
-                if(wordBreak(prefix, wordDict)){
-                    memo.put(prefix,true);
+        for (String word : wordDict) {
+            boolean isStartWith = s.startsWith(word);
+            if (isStartWith) {
+                String sufix = s.substring(word.length());
+                if (wordBreak(sufix, wordDict)) {
+                    memo.put(sufix, true);
                     return true;
                 }
             }
         }
-        memo.put(s,false);
+        memo.put(s, false);
         return false;
     }
-    
 }
