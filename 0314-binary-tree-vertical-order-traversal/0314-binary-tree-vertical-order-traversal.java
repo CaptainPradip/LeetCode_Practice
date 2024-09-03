@@ -32,10 +32,10 @@ class Solution {
                 queue.add(new Pair(currentNode.right, column + 1));
             }
         }
-        List<List<Integer>> result  = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
         List<Integer> sortedKeyset = new ArrayList<>(columnMap.keySet());
         Collections.sort(sortedKeyset);
-        for(int k : sortedKeyset){
+        for (int k : sortedKeyset) {
             result.add(columnMap.get(k));
         }
         return result;
