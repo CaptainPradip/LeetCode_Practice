@@ -11,8 +11,6 @@ class Solution {
             if (result.isEmpty() || interval[0] > result.getLast()[1]) {
                 result.add(interval);
             } else {
-                int[] merge = new int[] { Math.min(result.getLast()[0], interval[0]),
-                        Math.max(result.getLast()[1], interval[1]) };
                 result.getLast()[1] =  Math.max(result.getLast()[1], interval[1]);
             }
         }
