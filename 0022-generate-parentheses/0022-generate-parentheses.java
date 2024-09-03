@@ -1,20 +1,27 @@
 class Solution {
+    List<String> result = new ArrayList<>();
+    int n;
+
     public List<String> generateParenthesis(int n) {
-        List<String> result = new ArrayList<>();
-        backtrack(result,"",0,0,n );
+        // 1. 2 pair is (()) that means the max we can make it 2*n
+        // 2. base case is until length == 2*n
+        // 3. and opening bracket will be less than n
+        // 4. and closing bracket will be less than opening size
+        this.n = n;
+        backTracking(0, 0, "");
         return result;
+
     }
 
-    public void backtrack(List<String> output, String currentString, int open,int close,int max ){
-        if(currentString.length()==max*2){
-            output.add(currentString);
-            return;
+    public void backTracking(int open, int close, String str) {
+        if (str.length() == 2 * this.n) {
+            result.add(str);
         }
-        if(open < max){
-            backtrack(output,currentString+"(",open+1,close,max);
+        if (open < n) {
+            backTracking(open + 1, close, str + "(");
         }
-        if(close < open){
-            backtrack(output,currentString+")", open,close+1,max);
+        if (close < open) {
+            backTracking(open, close + 1, str + ")");
         }
     }
 }
