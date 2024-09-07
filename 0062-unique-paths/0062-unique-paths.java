@@ -6,7 +6,7 @@ class Solution {
                 if (i == 0 || j == 0) {
                     dp[j] = 1;
                 } else {
-                    dp[j] = dp[j - 1] +dp[j];
+                    dp[j] = dp[j - 1] + dp[j];
                 }
 
             }
