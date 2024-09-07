@@ -1,24 +1,21 @@
 class Solution {
-    // Backtracking
-
-    List<List<Integer>> result= new LinkedList<>();
+     List<List<Integer>> finalResult ;
     public List<List<Integer>> permute(int[] nums) {
-        LinkedList<Integer> permution = new LinkedList<>();
-        blacktrack(permution,nums);
-        return result;
+        finalResult = new ArrayList<>();
+        permutation(new ArrayList<>(),nums);
+        return finalResult;
     }
-    public void blacktrack(LinkedList<Integer> permutation, int[] nums){
-        if(permutation.size()==nums.length){
-             result.add(new ArrayList<>(permutation)); // Note create a new arraylist deep copy
-             return;
-        }
-        for(int num: nums){
-            if(!permutation.contains(num)) { // check for duplication 
-                permutation.add(num);
-                blacktrack(permutation,nums);
-                permutation.removeLast();
-            }
+    public void permutation(List<Integer> result,int [] nums){
 
+        if(result.size()==nums.length){
+            finalResult.add(new ArrayList(result));
+        }
+        for(int n : nums){
+            if(!result.contains(n)){
+                result.add(n);
+                permutation(result,nums);
+                result.removeLast();
+            }
         }
     }
 }
