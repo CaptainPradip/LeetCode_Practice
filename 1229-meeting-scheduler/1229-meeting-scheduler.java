@@ -6,8 +6,8 @@ class Solution {
         int pointB = 0;
         List<Integer> result = new ArrayList<>();
         while (pointA < slotsA.length && pointB < slotsB.length) {
-            int minDura = 
-                    Math.min(slotsA[pointA][1], slotsB[pointB][1]) - Math.max(slotsA[pointA][0], slotsB[pointB][0]) ;
+            int minDura = Math.min(slotsA[pointA][1], slotsB[pointB][1])
+                    - Math.max(slotsA[pointA][0], slotsB[pointB][0]);
             if (minDura >= dur) {
                 int max = Math.max(slotsA[pointA][0], slotsB[pointB][0]);
                 result.add(max);
