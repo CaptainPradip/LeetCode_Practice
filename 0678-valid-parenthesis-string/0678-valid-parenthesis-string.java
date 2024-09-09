@@ -1,28 +1,29 @@
 class Solution {
     public boolean checkValidString(String s) {
+        int minOpen = 0; // Minimum possible number of open parentheses
+        int maxOpen = 0; // Maximum possible number of open parentheses
 
-        int openCount = 0;
-        int closeCount = 0;
-        int n = s.length() - 1;
-        for (int i = 0; i < s.length(); i++) {
-            char leftChar = s.charAt(i);
-            if (leftChar == '(' || leftChar == '*') {
-                openCount++;
-            } else {
-                openCount--;
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                minOpen++; // '(' increases both min and max
+                maxOpen++;
+            } else if (c == ')') {
+                minOpen = Math.max(minOpen - 1, 0); // ')' decreases min, but it cannot go below 0
+                maxOpen--;
+            } else { // c == '*'
+                minOpen = Math.max(minOpen - 1, 0); // '*' can decrease minOpen as if it were ')'
+                maxOpen++; // '*' can also increase maxOpen as if it were '('
             }
-            char rightChar = s.charAt(n - i);
-            if (rightChar == ')' || rightChar == '*') {
-                closeCount++;
-            } else {
-                closeCount--;
-            }
-            if (openCount < 0 || closeCount < 0) {
+
+            if (maxOpen < 0) {
+                // If maxOpen falls below 0, there's no way to balance the parentheses
                 return false;
             }
         }
 
-        return true;
+        // After processing all characters, minOpen should be 0 for the string to be
+        // valid
+        return minOpen == 0;
 
     }
 
