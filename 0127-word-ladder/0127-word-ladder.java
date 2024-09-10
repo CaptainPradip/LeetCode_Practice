@@ -1,34 +1,34 @@
 class Solution {
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        HashSet<String> set = new HashSet<>(wordList);
-        if (!set.contains(endWord)) {
-            return 0;
+    public int ladderLength(String source, String target, List<String> words) {
+        if (source.length() != target.length()) {
+            return -1;
         }
-        Queue<String> queue = new LinkedList<>();
-        queue.add(beginWord);
-        int level = 1;
+        Queue<String> queue = new ArrayDeque<>();
+        Set<String> visited = new HashSet<>();
+        Set<String> wordsSet = new HashSet<>(words);
+        int length = 1;
+        queue.add(source);
+        visited.add(source);
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
-                String currWord = queue.poll();
-                char[] currArray = currWord.toCharArray();
-                for (int j = 0; j < currArray.length; j++) {
-                    char originalChar = currArray[j];
-                    for (char c = 'a'; c <= 'z'; c++) {
-                        currArray[j] = c;
-                        String newWord = new String(currArray);
-                        if (newWord.equals(endWord)) {
-                            return level + 1;
-                        }
-                        if (set.contains(newWord)) {
-                            set.remove(newWord);
-                            queue.add(newWord);
+                String currentString = queue.remove();
+                if (currentString.equals(target)) {
+                    return length;
+                }
+                for (int j = 0; j < currentString.length(); j++) {
+                    char[] currentStringArr = currentString.toCharArray();
+                    for (char ch = 'a'; ch <= 'z'; ch++) {
+                        currentStringArr[j] = ch;
+                        String newString = new String(currentStringArr);
+                        if (wordsSet.contains(newString) && !visited.contains(newString)) {
+                            queue.add(newString);
+                            visited.add(newString);
                         }
                     }
-                    currArray[j] = originalChar;
                 }
             }
-            level++;
+            length++;
         }
         return 0;
     }
