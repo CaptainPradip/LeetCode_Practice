@@ -8,16 +8,16 @@ class Solution {
         for (int n : nums) {
             hashMap.put(n, hashMap.getOrDefault(n, 0) + 1);
         }
-        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> hashMap.get(a) - hashMap.get(b));
+        PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> hashMap.get(a) - hashMap.get(b));
         for (int key : hashMap.keySet()) {
-            queue.add(key);
-            if (queue.size() > k) {
-                queue.remove();
+            heap.add(key);
+            if (heap.size() > k) {
+                heap.remove();
             }
         }
         int[] result = new int[k];
         for (int i = 0; i < k; i++) {
-            result[i] = queue.remove();
+            result[i] = heap.remove();
         }
         return result;
 
