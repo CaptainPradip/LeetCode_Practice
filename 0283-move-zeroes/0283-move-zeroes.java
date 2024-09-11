@@ -10,7 +10,6 @@ class Solution {
                 nums[j] = temp;
                 i++;
             }
-        
             j++;
         }
     }
