@@ -25,7 +25,7 @@ class Solution {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 TreeNode currentNode = queue.remove();
-                if (i==size-1) {
+                if (i == size - 1) {
                     result.add(currentNode.val);
                 }
                 if (currentNode.left != null) {
