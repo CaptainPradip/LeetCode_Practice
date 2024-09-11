@@ -27,9 +27,12 @@ class Solution {
                 }
             }
         }
-        return result;
-    }
-}
 
-// nums = [-1,0,1,2,-1,-4]
-// nums = [-4,-1,-1,0,1,2]
+        return result;
+
+    }
+
+    // nums = [-1,0,1,2,-1,-4]
+    // nums = [-4,-1,-1,0,1,2];
+    // Two Pointer
+}
