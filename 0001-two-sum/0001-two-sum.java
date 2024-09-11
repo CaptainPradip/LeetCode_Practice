@@ -8,10 +8,8 @@ class Solution {
                 return new int[] { map.get(com), i };
             }
             map.put(nums[i], i);
-
         }
         return new int[2];
-
     }
 }
 
