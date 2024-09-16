@@ -15,27 +15,24 @@
  */
 class Solution {
     public int maxDepth(TreeNode root) {
-        Queue<TreeNode> queue =new ArrayDeque<>();
-
-        if(root==null){
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        if (root == null) {
             return 0;
         }
         queue.add(root);
-        int level=0;
-        while(!queue.isEmpty()){
-
+        int level = 0;
+        while (!queue.isEmpty()) {
             int size = queue.size();
-            for(int i=0;i<size;i++){
+            for (int i = 0; i < size; i++) {
                 TreeNode currentNode = queue.remove();
-                if(currentNode.left!=null){
+                if (currentNode.left != null) {
                     queue.add(currentNode.left);
                 }
-                if(currentNode.right!=null){
+                if (currentNode.right != null) {
                     queue.add(currentNode.right);
                 }
             }
             level++;
-
         }
         return level;
     }
