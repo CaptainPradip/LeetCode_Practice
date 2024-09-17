@@ -1,20 +1,20 @@
 class Solution {
     public int[] findDiagonalOrder(int[][] nums) {
-        Queue<int[]> queue = new ArrayDeque<>();
+        Queue<Pair<Integer, Integer>> queue = new ArrayDeque<>();
         Map<Integer, LinkedList<Integer>> result = new HashMap<>();
-        queue.add(new int[] { 0, 0 });
+        queue.add(new Pair(0, 0));
         int N = nums.length;
         int M = nums[0].length;
         while (!queue.isEmpty()) {
-            int[] currentNode = queue.remove();
-            int row = currentNode[0];
-            int col = currentNode[1];
+            Pair<Integer, Integer> currentNode = queue.remove();
+            int row = currentNode.getKey();
+            int col = currentNode.getValue();
             result.computeIfAbsent(row + col, k -> new LinkedList<>()).addLast(nums[row][col]);
             if (col + 1 < nums[row].length) {
-                queue.add(new int[] { row, col + 1 });
+                queue.add(new Pair(row, col + 1));
             }
             if (col == 0 && row + 1 < nums.length) {
-                queue.add(new int[] { row + 1, col });
+                queue.add(new Pair(row + 1, col));
             }
         }
         int[] finalResult = new int[M * N];
