@@ -9,7 +9,7 @@ class Solution {
             Pair<Integer, Integer> currentNode = queue.remove();
             int row = currentNode.getKey();
             int col = currentNode.getValue();
-            result.computeIfAbsent(row + col, k -> new LinkedList<>()).addLast(nums[row][col]);
+            result.computeIfAbsent(row + col, k -> new LinkedList<>()).add(nums[row][col]);
             if (col + 1 < nums[row].length) {
                 queue.add(new Pair(row, col + 1));
             }
