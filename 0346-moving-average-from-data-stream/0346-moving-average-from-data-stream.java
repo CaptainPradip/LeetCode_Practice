@@ -5,6 +5,7 @@ class MovingAverage {
     int count = 0;
     int[] queue;
 
+    // this can be solve using circular queue
     public MovingAverage(int size) {
         queue = new int[size];
         this.size = size;
