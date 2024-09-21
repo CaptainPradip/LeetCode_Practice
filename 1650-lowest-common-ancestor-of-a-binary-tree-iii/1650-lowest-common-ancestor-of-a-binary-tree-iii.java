@@ -13,20 +13,19 @@ class FamilyNode {
 
 class Solution {
     public Node lowestCommonAncestor(Node p, Node q) {
-       HashSet<Node> hash = new HashSet<Node>();
-       while(p!=null){
-           hash.add(p);
-           p = p.parent;
-       }
+        HashSet<Node> hash = new HashSet<Node>();
+        while (p != null) {
+            hash.add(p);
+            p = p.parent;
+        }
+        while (q != null) {
+            if (hash.contains(q)) {
+                return q;
+            }
+            q = q.parent;
+        }
 
-       while(q!=null){
-           if(hash.contains(q)){
-               return q;
-           }
-           q = q.parent;
-       }
-        
         return q;
     }
-		
+
 }
