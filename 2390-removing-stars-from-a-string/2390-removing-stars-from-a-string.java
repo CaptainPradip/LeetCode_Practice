@@ -13,7 +13,7 @@ class Solution {
             j++;
         }
         StringBuilder sb = new StringBuilder();
-        for(Character ch : stack){
+        for (Character ch : stack) {
             sb.append(ch);
         }
         return sb.toString();
