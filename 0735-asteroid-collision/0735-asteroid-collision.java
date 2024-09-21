@@ -5,13 +5,12 @@ class Solution {
         // -10,-5,7
         for (int rock : asteroids) {
             boolean flag = true; // 5
-            while (!stack.isEmpty() && stack.peek() > 0 && rock < 0 ) { // 5
+            while (!stack.isEmpty() && stack.peek() > 0 && rock < 0 ) { 
                 if (Math.abs(rock) > Math.abs(stack.peek())) {
                     stack.pop();
-                    continue;
+                   continue;
                 } else if (Math.abs(rock) == Math.abs(stack.peek())) {
                     stack.pop();
-
                 }
                 flag = false;
                 break;
