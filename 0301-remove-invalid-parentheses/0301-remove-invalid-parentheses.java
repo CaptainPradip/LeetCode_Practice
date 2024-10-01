@@ -17,13 +17,11 @@ public class Solution {
 
         while (!queue.isEmpty()) {
             s = queue.poll();
-
             if (isValid(s)) {
                 // found an answer, add to the result
                 res.add(s);
                 found = true;
             }
-
             if (found)
                 continue;
 
@@ -32,7 +30,6 @@ public class Solution {
                 // we only try to remove left or right paren
                 if (s.charAt(i) != '(' && s.charAt(i) != ')') // this condition other than "(", ")"
                     continue;
-
                 String t = s.substring(0, i) + s.substring(i + 1);// remove one "("
 
                 if (!visited.contains(t)) {
@@ -49,7 +46,6 @@ public class Solution {
     // helper function checks if string s contains valid parantheses
     boolean isValid(String s) {
         int count = 0;
-
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c == '(')
