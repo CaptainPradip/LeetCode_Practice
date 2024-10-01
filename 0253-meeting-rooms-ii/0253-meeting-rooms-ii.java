@@ -9,10 +9,9 @@ class Solution {
         // return the size of min heap is the meeting room count;
 
         // sort based on start time
-        Arrays.sort(intervals,(a, b) -> a[0] - b[0]);
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
         PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> a - b);
         for (int[] interval : intervals) {
-
             if (!heap.isEmpty() && heap.peek() <= interval[0]) {
                 heap.remove();
             }
