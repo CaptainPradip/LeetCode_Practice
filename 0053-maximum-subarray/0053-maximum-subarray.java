@@ -4,7 +4,7 @@ class Solution {
         int right = 0;
         int sum = 0;
         int maxSum = Integer.MIN_VALUE;
-        if(nums.length ==0){
+        if (nums.length == 0) {
             return 0;
         }
         while (right < nums.length) {
@@ -17,6 +17,5 @@ class Solution {
             right++;
         }
         return maxSum;
-
     }
 }
