@@ -14,29 +14,25 @@
  * }
  */
 class BSTIterator {
-    ArrayList<Integer> inOrder= new ArrayList<>();
-    int currentIndex ;
+   private List<Integer> inorderList = new ArrayList<>();
+   private int currentIndex =0;
     public BSTIterator(TreeNode root) {
-        this.inOrder = new ArrayList<>();
-        this.currentIndex=-1;
-        this._inOrderTracv(root);
+        inorderTraversal(root);
     }
-    private void _inOrderTracv(TreeNode root){
+    private  void inorderTraversal(TreeNode root){
         if(root==null){
-            return;
+            return ;
         }
-        this._inOrderTracv(root.left);
-        this.inOrder.add(root.val);
-        this._inOrderTracv(root.right);
-
+        inorderTraversal(root.left);
+        inorderList.add(root.val);
+        inorderTraversal(root.right);
     }
-    
     public int next() {
-        return this.inOrder.get(++this.currentIndex);
+        return inorderList.get(currentIndex++);
     }
     
     public boolean hasNext() {
-        return this.currentIndex + 1 < this.inOrder.size();
+        return inorderList.size() > currentIndex; 
     }
 }
 
