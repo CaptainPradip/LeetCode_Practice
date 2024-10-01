@@ -29,14 +29,14 @@ class Solution {
         }
         String result = "";
         for (char ch : order.toCharArray()) {
-            int fr = frequency.getOrDefault(ch,0);
+            int fr = frequency.getOrDefault(ch, 0);
             for (int i = 0; i < fr; i++) {
                 result += ch;
             }
             frequency.remove(ch);
         }
         for (char ch : frequency.keySet()) {
-             int fr = frequency.get(ch);
+            int fr = frequency.get(ch);
             for (int i = 0; i < fr; i++) {
                 result += ch;
             }
