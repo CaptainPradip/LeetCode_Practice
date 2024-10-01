@@ -11,9 +11,8 @@ class Solution {
                 minHeap.remove();
             }
         }
-
         while (!minHeap.isEmpty()) {
-            result.add(minHeap.poll());
+            result.add(minHeap.remove());
         }
         return result.toArray(new int[result.size()][]);
     }
