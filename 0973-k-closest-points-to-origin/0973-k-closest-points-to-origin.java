@@ -3,15 +3,17 @@ class Solution {
 
         List<int[]> result = new ArrayList<>();
         PriorityQueue<int[]> minHeap = new PriorityQueue<>(
-                (a, b) -> (a[0] * a[0] + a[1] * a[1]) - (b[0] * b[0] + b[1] * b[1]));
+                (a, b) ->  (b[0] * b[0] + b[1] * b[1])- (a[0] * a[0] + a[1] * a[1]));
 
         for (int i = 0; i < points.length; i++) {
             minHeap.add(points[i]);
+            if(minHeap.size()>k){
+               minHeap.remove(); 
+            }
         }
 
-        while (k > 0) {
+        while (!minHeap.isEmpty()) {
             result.add(minHeap.poll());
-            k--;
         }
         return result.toArray(new int[result.size()][]);
     }
