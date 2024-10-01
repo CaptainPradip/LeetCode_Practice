@@ -2,9 +2,7 @@ class Solution {
     Map<Integer, Integer> memo = new HashMap<>();
 
     public int numDecodings(String s) {
-
         return recursiveWithMemo(0, s);
-
     }
 
     public int recursiveWithMemo(int index, String str) {
@@ -12,7 +10,6 @@ class Solution {
         if (memo.containsKey(index)) {
             return memo.get(index);
         }
-
         if (index == str.length()) {
             return 1;
         }
