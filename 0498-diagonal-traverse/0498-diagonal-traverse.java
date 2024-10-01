@@ -10,18 +10,19 @@ class Solution {
             int row = currentNode.getKey();
             int col = currentNode.getValue();
             result.computeIfAbsent(row + col, k -> new LinkedList<>()).add(nums[row][col]);
-            if (col + 1 < nums[row].length) {
-                queue.add(new Pair(row, col + 1));
-            }
+
             if (col == 0 && row + 1 < nums.length) {
                 queue.add(new Pair(row + 1, col));
+            }
+            if (col + 1 < nums[row].length) {
+                queue.add(new Pair(row, col + 1));
             }
         }
         int[] finalResult = new int[M * N];
         int i = 0;
         int j = 0;
         for (List<Integer> results : result.values()) {
-            if (j % 2 == 0) {
+            if (j % 2 == 1) {
                 Collections.reverse(results);
             }
             for (int n : results) {
