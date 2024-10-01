@@ -18,7 +18,6 @@ class Solution {
 
     public int averageOfSubtree(TreeNode root) {
         DFS(root);
-
         return count;
     }
 
