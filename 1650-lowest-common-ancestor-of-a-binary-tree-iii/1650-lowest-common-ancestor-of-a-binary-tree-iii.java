@@ -13,7 +13,6 @@ class Solution {
         Node pNode = p;
         Node qNode = q;
         while (pNode != qNode) {
-
             if (pNode.parent != null) {
                 pNode = pNode.parent;
             } else {
