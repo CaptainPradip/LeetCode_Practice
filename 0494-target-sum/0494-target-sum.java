@@ -1,5 +1,6 @@
 class Solution {
     int count;
+
     public int findTargetSumWays(int[] nums, int target) {
         DFS(nums, 0, 0, target);
         return count;
@@ -10,9 +11,11 @@ class Solution {
             if (sum == target) {
                 count++;
             }
-        } else {
-            DFS(nums, i + 1, sum + nums[i], target);
-            DFS(nums, i + 1, sum - nums[i], target);
+            return;
         }
+
+        DFS(nums, i + 1, sum + nums[i], target);
+        DFS(nums, i + 1, sum - nums[i], target);
+
     }
 }
