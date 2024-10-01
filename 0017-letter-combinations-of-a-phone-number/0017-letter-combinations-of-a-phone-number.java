@@ -1,27 +1,35 @@
 class Solution {
-
-    private List<String> combinations = new ArrayList<>();
-    private Map<Character,String> letters = Map.of('2',"abc",'3',"def",'4',"ghi",'5',"jkl",'6',"mno",'7',"pqrs",'8',"tuv",'9',"wxyz");
-    private String phoneDigits;
+    List<String> result = new ArrayList<>();
+    String digits;
+    Map<Character, String> map = new HashMap<>();
 
     public List<String> letterCombinations(String digits) {
-        if(digits.length()==0){
-            return combinations;
+        this.map.put('2', "abc");
+        this.map.put('3', "def");
+        this.map.put('4', "ghi");
+        this.map.put('5', "jkl");
+        this.map.put('6', "mno");
+        this.map.put('7', "pqrs");
+        this.map.put('8', "tuv");
+        this.map.put('9', "wxyz");
+        this.digits = digits;
+        if (digits == null || digits.isEmpty()) {
+            return result;
         }
-        phoneDigits=digits;
-        backTrack(0,new StringBuilder());
-        return combinations;
+        backTrack(0, new StringBuilder());
+        return result;
     }
-    private void backTrack(int index,StringBuilder path){
-        if(path.length()==phoneDigits.length()){
-            combinations.add(path.toString());
+
+    public void backTrack(int start, StringBuilder combination) {
+        if (combination.length() == this.digits.length()) {
+            result.add(combination.toString());
             return;
         }
-        String posssibleLetters = letters.get(phoneDigits.charAt(index));
-        for(char letter:posssibleLetters.toCharArray()){
-            path.append(letter);
-            backTrack(index+1,path);
-            path.deleteCharAt(path.length()-1);
+        String currentLetters = map.get(digits.charAt(start));
+        for (char ch : currentLetters.toCharArray()) {
+            combination.append(ch);
+            backTrack(start + 1, combination);
+            combination.deleteCharAt(combination.length() - 1);
         }
     }
 }
