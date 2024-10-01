@@ -8,8 +8,8 @@ class Solution {
             }
             monotonicStack.push(i);
         }
-        int [] ans = new int [monotonicStack.size()];
-        for(int i = monotonicStack.size()-1; i>=0 ;i--){
+        int[] ans = new int[monotonicStack.size()];
+        for (int i = monotonicStack.size() - 1; i >= 0; i--) {
             ans[i] = monotonicStack.pop();
         }
 
