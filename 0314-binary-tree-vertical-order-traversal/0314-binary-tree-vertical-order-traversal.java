@@ -27,16 +27,21 @@ class Solution {
             Pair<TreeNode, Integer> currentPair = queue.remove();
             TreeNode currentNode = currentPair.getKey();
             column = currentPair.getValue();
-            if (currentNode != null) {
-                if (!columnMap.containsKey(column)) {
-                    columnMap.put(column, new ArrayList<>());
-                }
-                columnMap.get(column).add(currentNode.val);
-                minColumn = Math.min(minColumn, column);
-                maxColumn = Math.max(maxColumn, column);
+            // if (currentNode != null) {
+            if (!columnMap.containsKey(column)) {
+                columnMap.put(column, new ArrayList<>());
+            }
+            columnMap.get(column).add(currentNode.val);
+            minColumn = Math.min(minColumn, column);
+            maxColumn = Math.max(maxColumn, column);
+            if (currentNode.left != null) {
                 queue.add(new Pair(currentNode.left, column - 1));
+            }
+            if (currentNode.right != null) {
                 queue.add(new Pair(currentNode.right, column + 1));
             }
+
+            // }
         }
         List<List<Integer>> result = new ArrayList<>();
         for (int i = minColumn; i < maxColumn + 1; ++i) {
