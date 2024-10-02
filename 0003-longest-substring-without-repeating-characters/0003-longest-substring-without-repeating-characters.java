@@ -5,7 +5,7 @@ class Solution {
         int left = 0;
         int right = 0;
         int n = s.length();
-        int maxLength =0;
+        int maxLength = 0;
         // 1. check if the value is present in set if present then delete the left char
 
         while (right < n) {
