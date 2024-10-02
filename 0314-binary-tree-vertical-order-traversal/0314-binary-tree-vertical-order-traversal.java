@@ -18,12 +18,11 @@ class Solution {
         HashMap<Integer, List<Integer>> columnMap = new HashMap<>();
         Queue<Pair<TreeNode, Integer>> queue = new ArrayDeque<>();
         int column = 0;
-        if(root==null){
+        if (root == null) {
             return new ArrayList<>();
         }
         queue.add(new Pair(root, column));
         int minColumn = 0, maxColumn = 0;
-
         while (!queue.isEmpty()) {
             Pair<TreeNode, Integer> currentPair = queue.remove();
             TreeNode currentNode = currentPair.getKey();
@@ -40,7 +39,7 @@ class Solution {
             }
         }
         List<List<Integer>> result = new ArrayList<>();
-       for(int i = minColumn; i < maxColumn + 1; ++i) {
+        for (int i = minColumn; i < maxColumn + 1; ++i) {
             result.add(columnMap.get(i));
         }
         return result;
