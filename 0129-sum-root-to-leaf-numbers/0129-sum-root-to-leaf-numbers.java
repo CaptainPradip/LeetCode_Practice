@@ -34,7 +34,6 @@ class Solution {
             list.removeLast();
             return sum;
         }
-
         int leftSum = backtracking(root.left, list);
         int rightSum = backtracking(root.right, list);
         list.removeLast();
