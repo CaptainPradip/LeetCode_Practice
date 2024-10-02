@@ -12,6 +12,7 @@ class Solution {
             if (Character.isDigit(ch)) {
                 currentNumber = currentNumber * 10 + Integer.parseInt(ch + "");
             }
+            
             if (!Character.isDigit(ch) && ch != ' ' || i == len - 1) {
                 if (operation == '-') {
                     stack.push(-currentNumber);
@@ -25,7 +26,6 @@ class Solution {
                 operation = ch;
                 currentNumber = 0;
             }
-
         }
         int result = 0;
         while (!stack.isEmpty()) {
