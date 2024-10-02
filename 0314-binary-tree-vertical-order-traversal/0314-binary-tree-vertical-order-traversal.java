@@ -44,7 +44,7 @@ class Solution {
             // }
         }
         List<List<Integer>> result = new ArrayList<>();
-        for (int i = minColumn; i < maxColumn + 1; ++i) {
+        for (int i = minColumn; i <= maxColumn; ++i) {
             result.add(columnMap.get(i));
         }
         return result;
