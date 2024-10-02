@@ -25,13 +25,13 @@ class Solution {
                 stack.push(currentNode.right);
             }
         }
-        while (q != null) {
-            ancesstor.add(q);
-            q = parents.get(q);
-        }
-        while (!ancesstor.contains(p)) {
+        while (p != null) {
+            ancesstor.add(p);
             p = parents.get(p);
         }
-        return p;
+        while (!ancesstor.contains(q)) {
+            q = parents.get(q);
+        }
+        return q;
     }
 }
