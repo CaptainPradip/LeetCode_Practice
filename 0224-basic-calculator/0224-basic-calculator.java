@@ -7,8 +7,9 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             if (Character.isDigit(ch)) {
-                operand = 10 * operand + Integer.valueOf(ch + "");
-            } else if (ch == '+') {
+                operand = 10 * operand + Integer.parseInt(ch + "");
+            }
+            if (ch == '+') {
                 result += sign * operand;
                 sign = 1;
                 operand = 0;
