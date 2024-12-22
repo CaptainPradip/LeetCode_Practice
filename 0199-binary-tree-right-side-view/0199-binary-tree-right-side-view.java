@@ -24,14 +24,13 @@ class Solution {
     }
 
     public void helper(TreeNode root, List<Integer> result, int index) {
-
         if (root == null) {
             return;
         }
         if (result.size() > index) {
             result.set(index, root.val);
-        }else{
-             result.add(root.val);
+        } else {
+            result.add(root.val);
         }
         helper(root.left, result, index + 1);
         helper(root.right, result, index + 1);
