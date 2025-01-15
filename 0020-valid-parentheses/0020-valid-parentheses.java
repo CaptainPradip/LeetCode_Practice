@@ -12,15 +12,20 @@ class Solution {
             if (ch == '(' || ch == '{' || ch == '[') {
                 stack.push(ch);
             } else {
-                char top = stack.peek();
-                if ((top == '(' && ch == ')') || (top == '{' && ch == '}') || (top == '[' && ch == ']')) {
-                    stack.pop();
+                if (!stack.isEmpty()) {
+                    char top = stack.peek();
+                    if ((top == '(' && ch == ')') || (top == '{' && ch == '}') || (top == '[' && ch == ']')) {
+                        stack.pop();
+                    } else {
+                        return false;
+                    }
                 } else {
-                    return false;
+                    stack.push(ch);
                 }
+
             }
         }
-       // if(stack.isEmpty())
-        return stack.isEmpty() ? true : false ;
+        // if(stack.isEmpty())
+        return stack.isEmpty() ? true : false;
     }
 }
