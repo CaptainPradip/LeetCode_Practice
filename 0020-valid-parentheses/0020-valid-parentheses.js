@@ -2,7 +2,7 @@ var isValid = function(s) {
     const stack = [];
     
     for (let i = 0 ; i < s.length ; i++) {
-        let c = s.charAt(i);
+        let c = s[i];
         switch(c) {
             case '(': stack.push(')');
                 break;
