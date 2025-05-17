@@ -6,21 +6,18 @@ class Solution {
         int rMax = 0;
         int waterCount = 0;
 
-        while(left < right){
-            if(height[left] < height[right]){
-                if(height[left] < lMax){
+        while (left < right) {
+            if (height[left] < height[right]) {
+                if (height[left] < lMax) {
                     waterCount += lMax - height[left];
-                }
-                else{
+                } else {
                     lMax = height[left];
                 }
                 left++;
-            }
-            else{
-                if(height[right] < rMax){
+            } else {
+                if (height[right] < rMax) {
                     waterCount += rMax - height[right];
-                }
-                else{
+                } else {
                     rMax = height[right];
                 }
                 right--;
