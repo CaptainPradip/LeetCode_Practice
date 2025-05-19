@@ -5,19 +5,20 @@ class Solution {
             return 1;
         int result = 0;
         List<Pair<Integer, Integer>> pairs = new ArrayList<>();
-        Stack<Double> stack = new Stack<>();
+      
         for (int i = 0; i < n; i++) {
             pairs.add(new Pair(position[i], speed[i]));
         }
         Collections.sort(pairs, (a, b) -> Integer.compare(b.getKey(), a.getKey()));
-        for (int i = 0; i < n; i++) {
+        int fleet = 1;
+        double prevTime = (double) (target - pairs.get(0).getKey()) / pairs.get(0).getValue();
+        for (int i = 1; i < n; i++) {
             double currentTime = (double) (target - pairs.get(i).getKey()) / pairs.get(i).getValue();
-            if (!stack.isEmpty() && currentTime <= stack.peek()) {
-                continue;
-            } else {
-                stack.push(currentTime);
+            if(currentTime > prevTime){
+                fleet++;
+                prevTime = currentTime;
             }
         }
-        return stack.size();
+        return fleet;
     }
 }
