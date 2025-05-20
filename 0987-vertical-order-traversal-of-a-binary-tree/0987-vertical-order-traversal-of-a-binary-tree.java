@@ -20,6 +20,7 @@ class Solution {
         int column = 0;
         queue.add(new Pair(root, column));
         int level = 0;
+        // BFS traversal 
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
@@ -41,10 +42,10 @@ class Solution {
         List<Integer> sortedKeyset = new ArrayList<>(columnMap.keySet());
         Collections.sort(sortedKeyset);
         for (int k : sortedKeyset) {
-            Collections.sort(columnMap.get(k),(a,b)-> a[0]==b[0] ? a[1]-b[1]: a[0]-b[0]);
-             List<Integer> collectedList = columnMap.get(k).stream()
+            Collections.sort(columnMap.get(k),(a,b)-> a[0]==b[0] ? a[1]-b[1]: a[0]-b[0]);// This is main logic 
+            List<Integer> collectedList = columnMap.get(k).stream()
                                            .map(a -> a[1])
-                                           .collect(Collectors.toList());
+                                           .collect(Collectors.toList());// convert arrary to List
             result.add(collectedList);
         }
         return result;
