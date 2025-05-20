@@ -1,34 +1,32 @@
 class Solution {
     public int evalRPN(String[] tokens) {
-        Stack<Integer> stack = new Stack<>();
-        for (String token : tokens) {
-            if (!"/+-*".contains(token)) {
-                stack.push(Integer.valueOf(token));
-                continue;
-            } else {
-                int b = stack.pop();
-                int a = stack.pop();
-                switch (token) {
-                    case "+":
-                        stack.push(a + b);
-                        break;
+        Stack<String> stack = new Stack<>();
 
-                    case "/":
-                        int result = a / b;
-                        stack.push(result);
-                        break;
-
-                    case "*":
-                        stack.push(a * b);
-                        break;
-
-                    case "-":
-                        stack.push(a - b);
-                        break;
-
-                }
+        for(String s : tokens){
+            if(s.equals("+")){
+                int a = Integer.parseInt(stack.pop());
+                int b = Integer.parseInt(stack.pop());
+                stack.push(String.valueOf(a+b));
+            }
+            else if(s.equals("-")){
+                int a = Integer.parseInt(stack.pop());
+                int b = Integer.parseInt(stack.pop());
+                stack.push(String.valueOf(b - a));
+            }
+            else if(s.equals("*")){
+                int a = Integer.parseInt(stack.pop());
+                int b = Integer.parseInt(stack.pop());
+                stack.push(String.valueOf(a*b));
+            }
+            else if(s.equals("/")){
+                int a = Integer.parseInt(stack.pop());
+                int b = Integer.parseInt(stack.pop());
+                stack.push(String.valueOf(b/a));
+            }
+            else{
+                stack.push(s);
             }
         }
-        return stack.peek();
+        return Integer.parseInt(stack.pop());
     }
 }
