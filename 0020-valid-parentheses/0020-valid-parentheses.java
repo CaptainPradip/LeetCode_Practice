@@ -1,31 +1,26 @@
 class Solution {
     public boolean isValid(String s) {
-        int n = s.length();
-        if (n % 2 != 0) {
-            return false;
-        }
+        HashMap<Character, Character> map = new HashMap<>();
+        map.put(')', '(');
+        map.put('}', '{');
+        map.put(']', '[');
+
         Stack<Character> stack = new Stack<>();
 
-        for (int i = 0; i < n; i++) {
-            char ch = s.charAt(i);
-
-            if (ch == '(' || ch == '{' || ch == '[') {
-                stack.push(ch);
-            } else {
-                if (!stack.isEmpty()) {
-                    char top = stack.peek();
-                    if ((top == '(' && ch == ')') || (top == '{' && ch == '}') || (top == '[' && ch == ']')) {
-                        stack.pop();
-                    } else {
-                        return false;
-                    }
+        for (char c : s.toCharArray()) {
+            //Opening brace encountered
+            if (!map.containsKey(c)) {
+                stack.push(c);
+            }
+            //Closing brace encountered
+            else {
+                if (!stack.isEmpty() && map.get(c) == stack.peek()) {
+                    stack.pop();
                 } else {
-                    stack.push(ch);
+                    return false;
                 }
-
             }
         }
-        // if(stack.isEmpty())
-        return stack.isEmpty() ;
+        return stack.size() == 0;
     }
 }
