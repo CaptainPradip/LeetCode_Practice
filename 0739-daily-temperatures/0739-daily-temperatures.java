@@ -9,7 +9,6 @@ class Solution {
         int[] result= new int [n];
         for(int i =0;i< n ;i++){
             int currentTemp = temperatures[i];
-
             while(!stack.isEmpty()&& currentTemp > temperatures[stack.peek()]){
                 int prevDay = stack.pop();
                 result[prevDay]= i - prevDay;
