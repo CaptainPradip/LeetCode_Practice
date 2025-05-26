@@ -6,12 +6,12 @@ class Solution {
         // 3. add the result value with the poped index with previousDay;
         Stack<Integer> stack = new Stack<>();
         int n = temperatures.length;
-        int[] result= new int [n];
-        for(int i =0;i< n ;i++){
+        int[] result = new int[n];
+        for (int i = 0; i < n; i++) {
             int currentTemp = temperatures[i];
-            while(!stack.isEmpty()&& currentTemp > temperatures[stack.peek()]){
+            while (!stack.isEmpty() && currentTemp > temperatures[stack.peek()]) {
                 int prevDay = stack.pop();
-                result[prevDay]= i - prevDay;
+                result[prevDay] = i - prevDay;
             }
             stack.push(i);
         }
