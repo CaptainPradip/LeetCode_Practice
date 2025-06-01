@@ -4,7 +4,7 @@ class Solution {
         int j = 0;
         for (int i = 0; i < pushed.length; i++) {
             stack.push(pushed[i]);
-            while ( !stack.isEmpty() && j < popped.length && stack.peek() == popped[j]  ) {
+            while (!stack.isEmpty() && j < popped.length && stack.peek() == popped[j]) {
                 stack.pop();
                 j++;
             }
