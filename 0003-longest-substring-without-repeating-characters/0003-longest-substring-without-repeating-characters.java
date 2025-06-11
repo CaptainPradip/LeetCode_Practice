@@ -6,7 +6,6 @@ class Solution {
         int longest = 0;
         HashSet<Character> set = new HashSet<>();
         while (right < s.length()) {
-
             if (!set.contains(s.charAt(right))) {
                 set.add(s.charAt(right));
                 longest = Math.max(longest, right - left + 1);
