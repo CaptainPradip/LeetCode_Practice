@@ -4,22 +4,23 @@ class Solution {
         // 2. Create minheap size k as it will keep only k element
         // 3. create the result array
         // Time Complexity n logn
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        HashMap<Integer, Integer> frequency = new HashMap<>();
         for (int n : nums) {
-            hashMap.put(n, hashMap.getOrDefault(n, 0) + 1);
+            frequency.put(n, frequency.getOrDefault(n, 0) + 1);
         }
-        PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> hashMap.get(a) - hashMap.get(b));
-        for (int key : hashMap.keySet()) {
-            heap.add(key);
-            if (heap.size() > k) {
-                heap.remove();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> frequency.get(a) - frequency.get(b));
+
+        for (int n : frequency.keySet()) {
+            minHeap.add(n);
+            if (minHeap.size() > k) {
+                minHeap.remove();
             }
         }
         int[] result = new int[k];
+
         for (int i = 0; i < k; i++) {
-            result[i] = heap.remove();
+            result[i] = minHeap.remove();
         }
         return result;
-
     }
 }
