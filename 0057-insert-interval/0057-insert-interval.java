@@ -17,20 +17,14 @@ class Solution {
     }
 
     public int[][] merge(int[][] intervals) {
-        // 1. sort the given interval
-        // Arrays.sort(intervals,(a,b)-> a[0]-b[0]);
         LinkedList<int[]> merge = new LinkedList<>();
         for (int[] interval : intervals) {
-            // check the interval is overlap or not
             if (merge.isEmpty() || merge.getLast()[1] < interval[0]) {
-                // not overlap so just add then interval
                 merge.add(interval);
             } else {
-                // its overlap so update the end point
                 merge.getLast()[1] = Math.max(merge.getLast()[1], interval[1]);
             }
         }
         return merge.toArray(new int[merge.size()][]);
-
     }
 }
