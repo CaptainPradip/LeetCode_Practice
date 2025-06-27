@@ -13,7 +13,6 @@ class Solution {
             merged.add(newInterval);
         }
         return merge(merged.toArray(new int[merged.size()][]));
-
     }
 
     public int[][] merge(int[][] intervals) {
