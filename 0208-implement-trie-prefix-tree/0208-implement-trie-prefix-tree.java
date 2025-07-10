@@ -1,54 +1,65 @@
 class TrieNode {
-    public Map<Character,TrieNode> children ;
-    public boolean isEndOfWord ;
-    TrieNode(){
-        this.children = new HashMap<>();
+    public TrieNode[] children;
+    public boolean isEndOfWord;
+
+    TrieNode() {
+        this.children = new TrieNode[26];
         this.isEndOfWord = false;
+    }
+
+    @Override
+    public String toString() {
+        return "TrieNode{" +
+                "children=" + Arrays.toString(children) +
+                ", isEndOfWord=" + isEndOfWord +
+                '}';
     }
 }
 
-
-class Trie { 
-    TrieNode root ;
+public class Trie {
+    TrieNode root;
 
     public Trie() {
         this.root = new TrieNode();
     }
-    
+
     public void insert(String word) {
         TrieNode current = this.root;
-        for(int i=0;i< word.length();i++){
+        for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-            if(!current.children.containsKey(ch)){
-                current.children.put(ch,new TrieNode());
+            if (current.children[ch - 'a'] == null) {
+                current.children[ch - 'a'] = new TrieNode();
             }
-            current = current.children.get(ch);
+            current = current.children[ch - 'a'];
         }
-        current.isEndOfWord= true;
+        current.isEndOfWord = true;
     }
-    
+
     public boolean search(String word) {
-        TrieNode current = this.root;
-        for(int i = 0 ;i< word.length();i++){
-            char ch = word.charAt(i);
-            if(!current.children.containsKey(ch)){
-                return false;
-            }
-           current = current.children.get(ch);
+        TrieNode current = traverseTrie(word, this.root);
+        if (current == null) {
+            return false;
         }
-      return current.isEndOfWord;
+        return current.isEndOfWord;
     }
-    
+
     public boolean startsWith(String prefix) {
-        TrieNode current = this.root;
-        for(int i= 0; i<prefix.length();i++ ){
-            char ch = prefix.charAt(i);
-            if(!current.children.containsKey(ch)){
-                return false;
-            }
-            current = current.children.get(ch);
+        if (traverseTrie(prefix, this.root) == null) {
+            return false;
         }
         return true;
+    }
+
+    public TrieNode traverseTrie(String str, TrieNode root) {
+        TrieNode current = root;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (current.children[ch - 'a'] == null) {
+                return null;
+            }
+            current = current.children[ch - 'a'];
+        }
+        return current;
     }
 }
 
