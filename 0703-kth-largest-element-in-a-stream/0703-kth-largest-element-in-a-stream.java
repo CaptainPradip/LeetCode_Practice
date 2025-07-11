@@ -10,7 +10,6 @@ class KthLargest {
                 heap.remove();
             }
         }
-
     }
 
     public int add(int val) {
