@@ -30,7 +30,6 @@ class Solution {
         root.left = buildBinarySearchTree(start, mid - 1);
         root.right = buildBinarySearchTree(mid + 1, end);
         return root;
-
     }
 
     public void inOrder(TreeNode root) {
